@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "588146814653",
+    "project_id": "corkapp-dev",
+    "storage_bucket": "corkapp-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588146814653:android:0825937a321b3243a991d4",
+        "android_client_info": {
+          "package_name": "com.example.flutter_bloc_login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588146814653-s3gt415tmaql1jvvhf4if084do08q5dv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrRsG5gfC77IsIue5Enx-pMuiSyjaEn4o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588146814653-s3gt415tmaql1jvvhf4if084do08q5dv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

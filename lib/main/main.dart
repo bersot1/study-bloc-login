@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc_login/home/view/home_page.dart';
@@ -6,7 +7,13 @@ import 'package:flutter_bloc_login/main/factories/pages/home/home_page_factory.d
 import 'package:flutter_bloc_login/main/factories/pages/login/login_page_factory.dart';
 import 'package:flutter_bloc_login/splash/splash.dart';
 
-void main() => runApp(App());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(App());
+}
+
+class DefaultFirebaseOptions {}
 
 class App extends StatelessWidget {
   const App({super.key});

@@ -12,6 +12,8 @@ environment:
 
 
 dependencies:
+  firebase_core: ^2.4.0
+  firebase_auth: ^4.2.0
   authentication_repository:
       path: repositories/authentication_repository
   bloc: ^8.1.0

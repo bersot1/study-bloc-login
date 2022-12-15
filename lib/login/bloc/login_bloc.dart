@@ -9,15 +9,16 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({
-    required AuthenticationRepository authenticationRepository,
+    required Authentication authenticationRepository,
   })  : _authenticationRepository = authenticationRepository,
         super(const LoginState()) {
     on<LoginUsernameChanged>(_onUsernameChanged);
     on<LoginPasswordChanged>(_onPasswordChanged);
     on<LoginSubmitted>(_onSubmitted);
+    on<LoginWithGoogle>(_signInWithGoogle);
   }
 
-  final AuthenticationRepository _authenticationRepository;
+  final Authentication _authenticationRepository;
 
   void _onUsernameChanged(
     LoginUsernameChanged event,
@@ -52,11 +53,20 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (state.status.isValidated) {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       try {
-        await _authenticationRepository.LogIn(username: state.username.value, password: state.password.value);
+        // await _authenticationRepository.LogIn(username: state.username.value, password: state.password.value);
+        await _authenticationRepository.signInWithGoogle();
         emit(state.copyWith(status: FormzStatus.submissionSuccess));
       } catch (e) {
         emit(state.copyWith(status: FormzStatus.submissionFailure));
       }
     }
+  }
+
+  Future<void> _signInWithGoogle(
+    LoginWithGoogle event,
+    Emitter<LoginState> emit,
+  ) async {
+    final user = await _authenticationRepository.signInWithGoogle();
+    print(user);
   }
 }

@@ -7,6 +7,8 @@ import '../bloc/login_bloc.dart';
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
 
+  void loginWithGoogle() {}
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
@@ -29,6 +31,10 @@ class LoginForm extends StatelessWidget {
             _PasswordInput(),
             const Padding(padding: EdgeInsets.all(12)),
             _LoginButton(),
+            SizedBox(height: 40),
+            ElevatedButton(
+                onPressed: () => context.read<LoginBloc>().add(const LoginWithGoogle()),
+                child: Text('Google With Google'))
           ],
         ),
       ),

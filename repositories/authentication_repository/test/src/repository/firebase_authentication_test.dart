@@ -19,27 +19,13 @@ void main() {
 
   late FirebaseAuth mockAuthService;
   late UserCredential mockUserCredential;
-  late GoogleSignIn mockGoogleSignIn;
   late User mockUser;
 
-  late UserEntity user;
-
   setUp(() {
-    user = UserEntity(
-      id: faker.guid.guid(),
-      fullName: faker.person.name(),
-      email: faker.internet.email(),
-      isAnonymous: false,
-      emailVerified: true,
-      imageUrl: faker.internet.httpUrl(),
-      phoneNumber: faker.phoneNumber.us(),
-    );
-
     mockUser = MockUser();
     mockUserCredential = MockUserCredential();
     when(() => mockUserCredential.user).thenReturn(mockUser);
     mockAuthService = MockFirebaseAuth();
-    mockGoogleSignIn = MockGoogleSignIn();
 
     sut = FirebaseAuthenticationRepository(authService: mockAuthService);
   });
@@ -149,7 +135,6 @@ void main() {
   group('FBAuthentication - signOut', () {
     test('Should call methods with correct values', () async {
       final _email = faker.internet.email();
-      final _pass = faker.lorem.word();
 
       final user = fbMocks.MockUser(
         isAnonymous: false,
